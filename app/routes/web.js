@@ -1,4 +1,5 @@
 var loginController = require('../controllers/loginController');
+var devolucaoController = require('../controllers/devolucaoController');
 var session = require('express-session');
 
 
@@ -18,9 +19,13 @@ module.exports = function(app) {
         loginController.realizarLogin(req, res);
     });
 
-    app.post('/index_cliente', function (req, res) {
+    app.post('/registrar_devolucao', function (req, res) {
         devolucaoController.inserir(req, res);
     });
+
+    app.get('/devolucao',function(req,res){
+          res.render('Tela_devolução/index_cliente', { layout: false, name : "name1" });
+      });
 
     app.get('/index_cliente',verifyJWT, function(req, res){
         res.render('Tela_devolução/index_cliente',{ layout: false });

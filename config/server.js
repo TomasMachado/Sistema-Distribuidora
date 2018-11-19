@@ -27,6 +27,7 @@ module.exports = function(){
 
     app.use(expressLayouts)          // Definimos que vamos utilizar o express-ejs-layouts na nossa aplicação
 
+    app.use(express.static('public'));
 
     app.use(expressValidator());
 

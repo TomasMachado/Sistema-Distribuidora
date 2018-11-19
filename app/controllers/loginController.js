@@ -13,6 +13,10 @@ module.exports.realizarLogin = function(req, res){
     loginModel.coletarDados(dados,function (erro, retorno){
       sess = req.session;
         console.log(retorno);
+        if(retorno == null){
+          console.log('banco fora do ar');
+          res.render('Tela_Login/login',{ layout: false , erro:'Banco fora do ar'});
+        }else
         if(retorno.length > 0){
             if(dados.password == retorno[0].password){
               sess.cpf = dados.cpf;
@@ -20,24 +24,19 @@ module.exports.realizarLogin = function(req, res){
                     const id = retorno[0].cpf;
                     //renderizar página de cliente
                     res.render('Tela_devolução/index_cliente',{token: token, layout: false });
-
                 }
-
                 else{
                     res.render('Tela_Principal/index_func',{ layout: false });
                 }
-
-
             }
-
             else{
-                alert("Senha incorreta");
-                res.render('Tela_Login/login',{ layout: false });
+                // alert("Senha incorreta");
+                res.render('Tela_Login/login',{ layout: false, erro:"Senha incorreta"});
             }
         }
         else{
-            alert("CPF não registrado");
-            res.render('Tela_Login/login',{ layout: false });
+            // alert("CPF não registrado");
+            res.render('Tela_Login/login',{ layout: false , erro: "CPF não registrado"});
         }
 
     })

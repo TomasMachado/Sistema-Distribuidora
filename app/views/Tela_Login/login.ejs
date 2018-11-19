@@ -36,8 +36,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
     <!-- //Meta-Tags -->
     <!-- Stylesheets -->
-    <link href="web/css/font-awesome.css" rel="stylesheet">
-    <link href="web/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/style1.css" rel='stylesheet' type='text/css' />
     <!--// Stylesheets -->
     <!--fonts-->
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
@@ -51,6 +51,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <form action="/login" method="post">
         <input type="hidden" name="token" value="eyJhbGciOiJIUzI1NiJ9.dXNlcg.EvNc9eWXXeAjpMTMzV4xoW2EjtEcLeSwJwY5_8vE6X8" />
         <div class="agile-field-txt">
+          <% if (typeof erro == 'string' && erro) { %>
+             <div style = "color:red; font-size:16px; font-weight:bold"> <i class="fa fa-exclamation-triangle"></i> <%=erro%></div>
+
+          <% } %>
             <label>
                 <i class="fa fa-user" aria-hidden="true"></i> CPF :</label>
             <input type="text" name="cpf" placeholder=" " required="" />
