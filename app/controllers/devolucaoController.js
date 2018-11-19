@@ -33,6 +33,11 @@ module.exports.alterarEstado = function(req, res){
     });
 }
 
+module.exports.coisar = function(req, res){
+    console.log('coisado');
+    res.render("Tela_Login/login",{layout:false});
+}
+
 module.exports.devolucoesCliente = function(req, res){
     var dados = req.body;
     devolucaoModel.devolucoesCliente(function(dados,erro, retorno){

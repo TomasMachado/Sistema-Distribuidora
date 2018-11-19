@@ -34,6 +34,8 @@ module.exports = function(){
 
     var rotas = require('../app/routes/web');
     rotas(app);
+    var rotas2 = require('../app/routes/web2');
+    rotas2(app);
 
     app.listen(8000,function(){
       console.log("localhost:8000");
@@ -41,5 +43,5 @@ module.exports = function(){
 
 
 
-    
+
   };

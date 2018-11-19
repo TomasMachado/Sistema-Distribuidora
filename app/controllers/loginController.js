@@ -19,14 +19,8 @@ module.exports.realizarLogin = function(req, res){
         }else if(retorno.length > 0){
             if(dados.password == retorno[0].password){
               sess.cpf = dados.cpf;
-                if(retorno[0].id_nivel == 1){
-                    const id = retorno[0].cpf;
-                    //renderizar página de cliente
+              sess.nivel = retorno[0].id_nivel;
                     res.redirect('/');
-                }
-                else{
-                    res.redirect('/');
-                }
             }
             else{
                 // alert("Senha incorreta");
