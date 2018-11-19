@@ -1,5 +1,5 @@
 var devolucaoModel = require('../models/devolucaoModel')();
-const emailController = require('./emailController');
+const emailController = require('./emailController')();
 
 
 module.exports.inserir = function(req, res){
@@ -33,7 +33,7 @@ module.exports.alterarEstado = function(req, res){
     });
 }
 
-module.exports.devolucoesCliente() = function(req, res){
+module.exports.devolucoesCliente = function(req, res){
     var dados = req.body;
     devolucaoModel.devolucoesCliente(function(dados,erro, retorno){
         if(!erro){
