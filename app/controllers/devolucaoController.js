@@ -45,7 +45,4 @@ module.exports.devolucoesCliente() = function(req, res){
 
         }
     });
-}  
-
-
 }
