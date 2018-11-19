@@ -7,6 +7,7 @@ module.exports = function(){
     var cookieParser = require('cookie-parser');
     var logger = require('morgan');
     const helmet = require('helmet');
+    const nodemailer = require('nodemailer');
 
 
 
@@ -37,4 +38,7 @@ module.exports = function(){
       console.log("localhost:8000");
     });
 
+
+
+    
   };
