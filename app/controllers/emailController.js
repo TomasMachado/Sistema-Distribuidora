@@ -3,14 +3,16 @@ const nodemailer = require('nodemailer');
 var $usuario = 'oltpdistribuidora@gmail.com';
 var $senha = 'oltp12345';
 
-module.exports.enviarEmail = function(dados){
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: $usuario,
-            pass: $senha
-        }
-    });
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: $usuario,
+        pass: $senha
+    }
+});
+
+module.exports.emailAlteracao = function(dados){
+
 
     var $destinatario = dados[0].email;
 
@@ -18,7 +20,7 @@ module.exports.enviarEmail = function(dados){
         from: $usuario,
         to: $destinatario,
         subject: 'Atualização sobre seu atendimento',
-        text: 'Agora sua devolução está em estado de: ' + dados[0].estado,
+        text: 'Seu atendimento está em estado de: ' + dados[0].estado,
     };
 
     transporter.sendMail(mailOptions, function(error, info){
@@ -28,4 +30,26 @@ module.exports.enviarEmail = function(dados){
             console.log('Email enviado: ' + info.response);
         }
     });
+}
+
+
+module.exports.enviarEmailCliente = function (dados) {
+
+    var $destinatario = dados[0].email;
+
+    var mailOptions = {
+        from: $usuario,
+        to: $destinatario,
+        subject: 'Mensagem sobre seu atendimento',
+        text: dados[0].message,
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email enviado: ' + info.response);
+        }
+    });
+
 }

@@ -22,7 +22,7 @@ module.exports.alterarEstado = function(req, res){
     devolucaoModel.alterarEstado(dados,function(erro, retorno){
         if(!erro){
             devolucaoModel.buscarEspecifica(dados,function(erro, retorno){
-                emailController.enviarEmail(retorno);
+                emailController.emailAlteracao(retorno);
             });
         }
         else{
@@ -39,7 +39,7 @@ module.exports.coisar = function(req, res){
 
 module.exports.devolucoesCliente = function(req, res){
     var dados = req.body;
-    devolucaoModel.devolucoesCliente(function(dados,erro, retorno){
+    devolucaoModel.devolucoesCliente( dados,function(dados,erro, retorno){
         if(!erro){
             res.render('index_cliente',{devolucoes: retorno});
         }
