@@ -1,29 +1,55 @@
 var db = require('../../config/db');
 const nodemailer = require('nodemailer');
+var $usuario = 'oltpdistribuidora@gmail.com';
+var $senha = 'oltp12345';
 
-var transporte = nodemailer.createTransport({
-    service: 'Gmail',
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-      user: 'usuario@gmail.com', // Basta dizer qual o nosso usuário
-      pass: 'shhh!!'             // e a senha da nossa conta
+        user: $usuario,
+        pass: $senha
     }
-  });
+});
+
+module.exports.emailAlteracao = function(dados){
 
 
-  module.exports = function(){
-      this.enviarEmail = function(dados, retorno){
-        var email = {
-            from: 'usuario@gmail.com', // Quem enviou este e-mail
-            to: dados[0].email, // Quem receberá
-            subject: 'Atualização sobre sua devolução!',  // Um assunto bacana :-)
-            html: dados[0].nome + ' sua devolução está sendo processada, atualmente está na seguinte etapa: ' + dados[0].estado // O conteúdo do e-mail
-          };
+    var $destinatario = dados[0].email;
 
-          transporte.sendMail(email, function(err, info){
-            if(err)
-              throw err; // Oops, algo de errado aconteceu.
+    var mailOptions = {
+        from: $usuario,
+        to: $destinatario,
+        subject: 'Atualização sobre seu atendimento',
+        text: 'Seu atendimento está em estado de: ' + dados[0].estado,
+    };
 
-            console.log('Email enviado! Leia as informações adicionais: ', info);
-          });
-      }
-  }
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email enviado: ' + info.response);
+        }
+    });
+}
+
+
+module.exports.enviarEmailCliente = function (dados) {
+
+    var $destinatario = dados[0].email;
+
+    var mailOptions = {
+        from: $usuario,
+        to: $destinatario,
+        subject: 'Mensagem sobre seu atendimento',
+        text: dados[0].message,
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email enviado: ' + info.response);
+        }
+    });
+
+}
