@@ -18,7 +18,8 @@ module.exports.realizarLogin = function(req, res){
           res.render('Tela_Login/login',{ layout: false , erro:'Banco fora do ar'});
         }else if(retorno.length > 0){
             if(dados.password == retorno[0].password){
-              sess.cpf = dados.cpf;
+              sess.cpf = retorno[0].cpf;
+              sess.nome = retorno[0].nome;
               sess.nivel = retorno[0].id_nivel;
                     res.redirect('/');
             }

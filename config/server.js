@@ -37,11 +37,8 @@ module.exports = function(){
     var rotas2 = require('../app/routes/web2');
     rotas2(app);
 
-    app.listen(8000,function(){
+    app.listen(7777,function(){
       console.log("localhost:8000");
     });
-
-
-
 
   };

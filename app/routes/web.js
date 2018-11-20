@@ -10,9 +10,19 @@ module.exports = function(app) {
       console.log(sess)
       if(sess.cpf){
 
-        res.render('Tela_Principal/index_func',{ layout: false })
+        res.render('Tela_Principal/index_func',{ layout: false , nome: sess.nome})
       }else
-        res.render('Tela_Login/login', {layout: false});
+        res.render('Tela_Principal/pagina_deslogada', {layout: false});
+    });
+
+    app.get('/login', function (req, res) {
+      var sess = req.session;
+      console.log(sess)
+      if(sess.cpf){
+        res.redirect('/');
+      }else{
+        res.render('Tela_Login/login', {layout:false});
+      }
     });
 
     app.post('/login', function (req, res) {
