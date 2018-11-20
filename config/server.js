@@ -1,4 +1,5 @@
 module.exports = function(){
+    process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
     var express = require('express');
     var session = require('express-session');
     var bodyParser = require('body-parser');

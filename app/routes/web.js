@@ -30,7 +30,6 @@ module.exports = function(app) {
     app.get('/index_cliente',verifyJWT, function(req, res){
         res.render('Tela_devolução/index_cliente',{ layout: false });
     });
-
     function verifyJWT(req, res, next) {
         var token = req.body.token || req.query.token || req.headers['x-access-token'];
         if (!token) return res.status(401).send({auth: false, message: 'No token provided.'});

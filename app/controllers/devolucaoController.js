@@ -1,5 +1,5 @@
 var devolucaoModel = require('../models/devolucaoModel')();
-const emailController = require('./emailController')();
+const emailController = require('./emailController');
 
 
 module.exports.inserir = function(req, res){
@@ -19,10 +19,9 @@ module.exports.buscarTodas = function(req, res){
 
 module.exports.alterarEstado = function(req, res){
     var dados = req.body;
-    devolucaoModel.alterarEstado(function(dados,erro, retorno){
+    devolucaoModel.alterarEstado(dados,function(erro, retorno){
         if(!erro){
-            res.redirect('/index_func');
-            devolucaoModel.buscarEspecifica(function(dados,erro, retorno){
+            devolucaoModel.buscarEspecifica(dados,function(erro, retorno){
                 emailController.enviarEmail(retorno);
             });
         }

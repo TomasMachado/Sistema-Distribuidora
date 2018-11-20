@@ -1,29 +1,31 @@
 var db = require('../../config/db');
 const nodemailer = require('nodemailer');
+var $usuario = 'oltpdistribuidora@gmail.com';
+var $senha = 'oltp12345';
 
-var transporte = nodemailer.createTransport({
-    service: 'Gmail',
-    auth: {
-      user: 'usuario@gmail.com', // Basta dizer qual o nosso usuário
-      pass: 'shhh!!'             // e a senha da nossa conta
-    }
-  });
+module.exports.enviarEmail = function(dados){
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: $usuario,
+            pass: $senha
+        }
+    });
 
+    var $destinatario = dados[0].email;
 
-  module.exports = function(){
-      this.enviarEmail = function(dados, retorno){
-        var email = {
-            from: 'usuario@gmail.com', // Quem enviou este e-mail
-            to: dados[0].email, // Quem receberá
-            subject: 'Atualização sobre sua devolução!',  // Um assunto bacana :-)
-            html: dados[0].nome + ' sua devolução está sendo processada, atualmente está na seguinte etapa: ' + dados[0].estado // O conteúdo do e-mail
-          };
+    var mailOptions = {
+        from: $usuario,
+        to: $destinatario,
+        subject: 'Atualização sobre seu atendimento',
+        text: 'Agora sua devolução está em estado de: ' + dados[0].estado,
+    };
 
-          transporte.sendMail(email, function(err, info){
-            if(err)
-              throw err; // Oops, algo de errado aconteceu.
-
-            console.log('Email enviado! Leia as informações adicionais: ', info);
-          });
-      }
-  }
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email enviado: ' + info.response);
+        }
+    });
+}
