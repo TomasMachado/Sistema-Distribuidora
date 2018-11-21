@@ -20,7 +20,8 @@ module.exports = function (){
 
     this.buscarEspecifica = function(dados, retorno){
         var con = db();
-        return con.query('select * from devolucoes where devolucao_id = 1',dados, retorno);
+        console.log(dados)
+        return con.query('select * from devolucoes where id = ?',dados, retorno);
     }
 
     this.devolucoesCliente = function(dados, retorno){

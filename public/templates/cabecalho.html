@@ -23,7 +23,23 @@
 
                 </ul>
               </nav>
-
+              <div class="menu trans_800">
+                <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+                  <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="services.html">Classes & Services</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <% if (typeof nome == 'string' && nome)  { %>
+                      <li><a href = ""><nobr> <i class="fa fa-user"></i> <%=nome%></nobr> </a></li>
+                      <li  id = "ook"><a href = "/logout" >Logout</a></li>
+                      <% } else { %>
+                          <li ><a href = "/login" >Login</a></li>
+                      <%  }%>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -45,15 +61,3 @@
     </div>
 
     <!-- Menu -->
-
-    <div class="menu trans_800">
-      <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About us</a></li>
-          <li><a href="services.html">Classes & Services</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </div>

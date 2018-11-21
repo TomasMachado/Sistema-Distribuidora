@@ -11,25 +11,28 @@ module.exports = function(app) {
   app.use(session({secret: 'ssshhhhh'}));
 
 
+  app.get('/usuario/:cpf', function(req,res){
+    if(! req.session.cpf){
+      res.redirect('../acesso-negado');
+    }else
+    sess = req.session;
+    if(sess.id_nivel == 0){
+      //TODO mostrar pagina
+    }else if(sess.cpf == req.params.cpf){
+      //TODO mostrar pagina
+    }else{
+      res.redirect('../acesso-negado');
+    }
+
+  });
+
   app.post('/coisar', function (req, res) {
     devolucaoController.coisar(req, res);
   });
 
   app.get('/devolucao/:id', function (req, res) {
-   var format = req.params.id;
-   console.log(format);
-   console.log(__dirname);
-   if(!req.session.cpf){
-      res.redirect('../acesso-negado');
-   }else
-   if(req.session.id_nivel == 0){
-     //mostrar pagina
-   }else{
-     res.redirect('../acesso-negado', {layout:false});
-
-   }
-
-});
+    devolucaoController.mostrar_devolucao(req, res);
+  });
 
   app.get('/acesso-negado', function(req, res){
     res.render('Tela_Principal/acesso_negado', {layout:false});

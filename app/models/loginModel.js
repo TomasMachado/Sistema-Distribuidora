@@ -5,7 +5,7 @@ module.exports = function(){
 
     this.coletarDados = function(dados,retorno){
         var con = db();
-      return con.query('SELECT cpf, nome, password FROM users WHERE cpf = ?', dados.cpf,retorno);
+      return con.query('SELECT id, nome, password,id_nivel FROM clientes WHERE id = ?', dados.cpf,retorno);
 
 
     };
