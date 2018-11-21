@@ -18,6 +18,7 @@ module.exports.buscarTodas = function(req, res){
 }
 
 module.exports.alterarEstado = function(req, res){
+<<<<<<< HEAD
   var dados = req.body;
   devolucaoModel.alterarEstado(dados,function(erro, retorno){
     if(!erro){
@@ -30,6 +31,20 @@ module.exports.alterarEstado = function(req, res){
       console.log(erro);
     }
   });
+=======
+    var dados = req.body;
+    devolucaoModel.alterarEstado(dados,function(erro, retorno){
+        if(!erro){
+            devolucaoModel.buscarEspecificaEmail(dados,function(erro, retorno){
+                emailController.emailAlteracao(retorno);
+            });
+        }
+        else{
+            //melhorar a verificação do erro
+            console.log(erro);
+        }
+    });
+>>>>>>> 38303f1053020a989e49e42038af0af502e60643
 }
 
 module.exports.coisar = function(req, res){

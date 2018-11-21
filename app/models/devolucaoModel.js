@@ -20,8 +20,12 @@ module.exports = function (){
 
     this.buscarEspecifica = function(dados, retorno){
         var con = db();
+<<<<<<< HEAD
         console.log(dados)
         return con.query('select * from devolucoes where id = ?',dados, retorno);
+=======
+        return con.query('select d.estado, c.email from cliente as c left join devolucoes as d on c.id = d.cliente_id where c.id = ?',dados, retorno);
+>>>>>>> 38303f1053020a989e49e42038af0af502e60643
     }
 
     this.devolucoesCliente = function(dados, retorno){
@@ -30,3 +34,4 @@ module.exports = function (){
     }
     return this;
 }
+

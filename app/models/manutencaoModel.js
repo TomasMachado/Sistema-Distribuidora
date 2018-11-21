@@ -25,7 +25,7 @@ module.exports = function () {
 
     this.buscarEspecifica = function(dados, retorno){
         var con = db();
-        return con.query('select * from manutencoes where manutencao_id = ?',dados, retorno);
+        return con.query('select m.estado, c.email from cliente as c left join manutencoes as m on c.id = m.cliente_id where c.id = ?',dados, retorno);
     }
 
 
