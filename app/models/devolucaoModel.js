@@ -20,7 +20,7 @@ module.exports = function (){
 
     this.buscarEspecifica = function(dados, retorno){
         var con = db();
-        return con.query('select * from devolucoes where devolucao_id = 1',dados, retorno);
+        return con.query('select d.estado, c.email from cliente as c left join devolucoes as d on c.id = d.cliente_id where c.id = ?',dados, retorno);
     }
 
     this.devolucoesCliente = function(dados, retorno){
@@ -29,3 +29,4 @@ module.exports = function (){
     }
     return this;
 }
+

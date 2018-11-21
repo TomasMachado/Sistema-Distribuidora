@@ -21,7 +21,7 @@ module.exports.alterarEstado = function(req, res){
     var dados = req.body;
     devolucaoModel.alterarEstado(dados,function(erro, retorno){
         if(!erro){
-            devolucaoModel.buscarEspecifica(dados,function(erro, retorno){
+            devolucaoModel.buscarEspecificaEmail(dados,function(erro, retorno){
                 emailController.emailAlteracao(retorno);
             });
         }
