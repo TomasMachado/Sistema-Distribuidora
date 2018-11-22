@@ -36,6 +36,11 @@ module.exports = function(app) {
 
   });
 
+  app.get('/nao-encontrado', function(req, res){
+    res.render('Tela_Principal/inexistente', {layout:false});
+
+  });
+
   app.get('/devolucoes', function(req, res){
       devolucaoController.buscar_todas(req, res);
   });

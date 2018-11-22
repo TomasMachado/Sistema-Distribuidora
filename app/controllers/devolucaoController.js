@@ -65,15 +65,17 @@ module.exports.devolucoesCliente = function(req, res){
 }
 module.exports.mostrar_devolucao = function(req, res){
     var format = req.params.id;
-    console.log(format);
     if(!req.session.cpf){
-      res.redirect('../acesso-negado');
+      res.redirect('acesso-negado');
     }else{
-    devolucaoModel.buscarEspecifica(format,function(format, retorno){
+    devolucaoModel.buscarDevolucao(format,function(format, retorno){
       console.log(retorno);
       if(retorno == null || retorno.length == 0){
-        //TODO 404 not found
-      }else if(retorno[0].cliente_id != req.session.cpf){
+        res.redirect('../../nao-encontrado');
+      }else if(req.session.id_nivel == 0 || retorno[0].cliente_id == req.session.cpf){
+          res.render('Tela_devolução/devolucao', {layout : false, devolucao : retorno})
+      }
+      else if(retorno[0].cliente_id != req.session.cpf){
         res.redirect('../acesso-negado');
       }else{
         //TODO mostrar dev

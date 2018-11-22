@@ -28,5 +28,11 @@ module.exports = function (){
         var con = db();
         return con.query('select * from devolucoes where cliente_id = ?',dados,retorno);
     }
+
+    this.buscarDevolucao = function(dados, retorno){
+        var con = db();
+        return con.query('select * from devolucoes where id = ?',dados,retorno);
+    }
+
     return this;
 }
