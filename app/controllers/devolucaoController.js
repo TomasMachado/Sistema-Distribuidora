@@ -35,6 +35,10 @@ module.exports.buscar_todas = function(req, res){
 }
 
 module.exports.alterarEstado = function(req, res){
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3312dc488856f29c5ff76ff1d3c3fad8a4eb45d5
     var dados = req.body;
     devolucaoModel.alterarEstado(dados,function(erro, retorno){
         if(!erro){
@@ -47,6 +51,10 @@ module.exports.alterarEstado = function(req, res){
             console.log(erro);
         }
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3312dc488856f29c5ff76ff1d3c3fad8a4eb45d5
 }
 
 
