@@ -1,0 +1,49 @@
+<html>
+<head>
+    <%include  ../../../public/templates/cabecalho_styles.html%>
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<%include  ../../../public/templates/cabecalho.html%>
+  <div style = "margin-top:30px" class="container">
+    <table class="table table-striped table table-hover">
+      <thead>
+       <tr>
+        <th>Motivo</th>
+          <th>Estado</th>
+          <th>Descrições</th>
+        </tr>
+      </thead>
+      <tbody>
+         <% for(var chave in devolucoes){ %>
+ <tr class='clickable-row' data-href='/devolucao/<%=devolucoes[chave].id %>' style = " cursor: pointer;">
+
+        <td><%= devolucoes[chave].motivo %> </td>
+        <td><%= devolucoes[chave].estado %>  </td>
+        <td> <%= devolucoes[chave].descricao %> </td>
+
+    <% } %>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+<script>
+  jQuery(document).ready(function($) {
+      $('*[data-href]').on('click', function() {
+          window.location = $(this).data("href");
+      });
+  });
+</script>
+</body>
+
+<%include  ../../../public/templates/cabecalho_scripts.html%>
+
+
+
+</html>

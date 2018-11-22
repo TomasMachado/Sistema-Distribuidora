@@ -1,5 +1,12 @@
 var devolucaoModel = require('../models/devolucaoModel')();
 const emailController = require('./emailController');
+var session = require('express-session');
+var express = require('express');
+var app = express();
+app.use(session({secret: 'ssshhhhh'}));
+var sess;
+
+
 
 
 module.exports.inserir = function(req, res){
@@ -10,28 +17,24 @@ module.exports.inserir = function(req, res){
   });
 }
 
-module.exports.buscarTodas = function(req, res){
-  devolucaoModel.buscarDevolucoes(function(erro, retorno){
+module.exports.buscar_todas = function(req, res){
+  if(!req.session.cpf){
+    res.redirect('../acesso-negado');
+  }
+  else if(req.session.id_nivel == 0){
+    console.log('>:(');
+    devolucaoModel.buscarDevolucoes(function(erro, retorno){
+      console.log(retorno);
+      console.log('>:(');
     //Botar aqui a renderização dos dados na tabela da página
-    return retorno;
+    res.render('Tela_devolucoes/devolucoes', {devolucoes: retorno, layout:false});
   });
+}else{
+    res.redirect('../acesso-negado');
+}
 }
 
 module.exports.alterarEstado = function(req, res){
-<<<<<<< HEAD
-  var dados = req.body;
-  devolucaoModel.alterarEstado(dados,function(erro, retorno){
-    if(!erro){
-      devolucaoModel.buscarEspecifica(dados,function(erro, retorno){
-        emailController.emailAlteracao(retorno);
-      });
-    }
-    else{
-      //melhorar a verificação do erro
-      console.log(erro);
-    }
-  });
-=======
     var dados = req.body;
     devolucaoModel.alterarEstado(dados,function(erro, retorno){
         if(!erro){
@@ -44,13 +47,8 @@ module.exports.alterarEstado = function(req, res){
             console.log(erro);
         }
     });
->>>>>>> 38303f1053020a989e49e42038af0af502e60643
 }
 
-module.exports.coisar = function(req, res){
-  console.log('coisado');
-  res.render("Tela_Login/login",{layout:false});
-}
 
 module.exports.devolucoesCliente = function(req, res){
   var dados = req.body;
@@ -65,12 +63,12 @@ module.exports.devolucoesCliente = function(req, res){
     }
   });
 }
-  module.exports.mostrar_devolucao = function(req, res){
+module.exports.mostrar_devolucao = function(req, res){
     var format = req.params.id;
     console.log(format);
     if(!req.session.cpf){
       res.redirect('../acesso-negado');
-    }else
+    }else{
     devolucaoModel.buscarEspecifica(format,function(format, retorno){
       console.log(retorno);
       if(retorno == null || retorno.length == 0){
@@ -82,6 +80,5 @@ module.exports.devolucoesCliente = function(req, res){
         res.redirect('../');
       }
     });
-
-
   }
+}

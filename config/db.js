@@ -2,10 +2,10 @@
 
 const con = function(){
     return mysql.createConnection({
-        host:'localhost',
-        user:'root',
-        password:'password',
-        database:'oltp'
+        host:'db4free.net',
+        user:'nettswork',
+        password:'oltp1234',
+        database:'oltp_teste'
     });
 };
 

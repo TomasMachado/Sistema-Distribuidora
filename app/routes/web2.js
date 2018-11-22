@@ -26,9 +26,6 @@ module.exports = function(app) {
 
   });
 
-  app.post('/coisar', function (req, res) {
-    devolucaoController.coisar(req, res);
-  });
 
   app.get('/devolucao/:id', function (req, res) {
     devolucaoController.mostrar_devolucao(req, res);
@@ -38,6 +35,17 @@ module.exports = function(app) {
     res.render('Tela_Principal/acesso_negado', {layout:false});
 
   });
+
+  app.get('/devolucoes', function(req, res){
+      devolucaoController.buscar_todas(req, res);
+  });
+
+  app.get('/devolucoes/:id_cliente', function(){
+    //TODO ver todas devolucoes do cliente
+
+
+  })
+
 
   app.use(express.static('devolucao/public'));
 
