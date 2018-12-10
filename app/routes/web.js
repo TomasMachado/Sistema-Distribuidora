@@ -1,5 +1,6 @@
 var loginController = require('../controllers/loginController');
 var devolucaoController = require('../controllers/devolucaoController');
+var emailController = require('../controllers/emailController');
 var session = require('express-session');
 
 
@@ -27,6 +28,11 @@ module.exports = function(app) {
 
     app.post('/login', function (req, res) {
         loginController.realizarLogin(req, res);
+    });
+
+    app.post('/faleconosco', function(req, res){
+        var dados = req.body;
+        emailController.enviarFaleConosco(dados);
     });
 
     app.post('/registrar_devolucao', function (req, res) {

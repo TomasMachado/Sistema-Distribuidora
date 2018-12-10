@@ -53,3 +53,25 @@ module.exports.enviarEmailCliente = function (dados) {
     });
 
 }
+
+
+module.exports.enviarFaleConosco = function (dados) {
+
+    var $destinatario = $usuario;
+
+    var mailOptions = {
+        from: $usuario,
+        to: $destinatario,
+        subject: 'Dúvida do cliente ' + dados[0].nome,
+        text: 'mensagem: ' + dados[0].message + 'dados do cliente: ' + dados[0].nome + 'email do cliente: ' + dados[0].email,
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email enviado: ' + info.response);
+        }
+    });
+
+}
