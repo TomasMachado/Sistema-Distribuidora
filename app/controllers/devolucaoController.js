@@ -54,7 +54,7 @@ module.exports.devolucoesCliente = function(req, res){
   var dados = req.body;
   devolucaoModel.devolucoesCliente( dados,function(dados,erro, retorno){
     if(!erro){
-      res.render('index_cliente',{devolucoes: retorno});
+      res.render('Tela_devolução/index_cliente',{devolucoes: retorno});
     }
     else{
       //TODO tratar esse erro

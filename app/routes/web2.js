@@ -13,7 +13,7 @@ module.exports = function(app) {
 
   app.get('/usuario/:cpf', function(req,res){
     if(! req.session.cpf){
-      res.redirect('../acesso-negado');
+      res.redirect('../acesso-negado',{ layout: false , nome: req.session.nome});
     }else
     sess = req.session;
     if(sess.id_nivel == 0){

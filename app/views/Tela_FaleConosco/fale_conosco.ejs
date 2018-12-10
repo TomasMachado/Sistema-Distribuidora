@@ -1,14 +1,13 @@
 <html>
 <head>
+  <link href="http://localhost:8000/css/tela_email/fale_conosco.css" rel="stylesheet" type="text/css">
   <%include  ../../../public/templates/cabecalho_styles.html%>
 </head>
 
 <body>
   <%include  ../../../public/templates/cabecalho.html%>
-
-
 <div>
-    <form action="/faleconosco" method="POST">
+    <form id = "fale_conosco_form" action="/faleconosco" method="POST">
         <h1>Entre em contato conosco</h1>
     <p>
         Nome: <br />
@@ -23,16 +22,16 @@
 
     <p>
         Sua dúvida:<br />
-        <textarea name="message"> 
+        <textarea name="message">
 
         </textarea>
     </p>
 
     <p> <input type="submit" name="Enviar dúvida" value="Enviar"></p>
-  
+
     </form>
 </div>
-  
+
 </body>
   <%include  ../../../public/templates/cabecalho_scripts.html%>
 </html>
