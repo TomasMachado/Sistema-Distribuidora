@@ -23,6 +23,11 @@ module.exports = function (){
         return con.query('select d.estado, c.email from cliente as c left join devolucoes as d on c.id = d.cliente_id where c.id = ?',dados, retorno);
     }
 
+    this.buscarDevolucoesCompleta = function(retorno){
+        var con = db();
+        return con.query('select d.estado, d.motivo, d.descricao, c.nome from devolucoes as d left join cliente as c on d.cliente_id = c.id',retorno);
+    }
+
 
     this.devolucoesCliente = function(dados, retorno){
         var con = db();
