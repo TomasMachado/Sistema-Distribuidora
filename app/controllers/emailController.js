@@ -63,7 +63,7 @@ module.exports.enviarFaleConosco = function (dados,res) {
         from: $usuario,
         to: $destinatario,
         subject: 'Dúvida do cliente ' + dados.nome,
-        text: 'mensagem: ' + dados.message + 'dados do cliente: ' + dados.nome + 'email do cliente: ' + dados.email,
+        text: 'mensagem: ' + dados.message + 'dados do cliente: ' + dados.nome + ' email do cliente: ' + dados.email,
     };
 
     transporter.sendMail(mailOptions, function(error, info){
