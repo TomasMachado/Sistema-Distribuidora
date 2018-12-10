@@ -1,0 +1,36 @@
+<html>
+<head>
+  <%include  ../../../public/templates/cabecalho_styles.html%>
+</head>
+
+<body>
+  <%include  ../../../public/templates/cabecalho.html%>
+
+
+<div>
+    <form action="/faleconosco" method="POST">
+        <h1>Entre em contato conosco</h1>
+    <p>
+        Nome: <br />
+        <input type ="text" size="30" name="nome">
+    </p>
+
+    <p>
+        E-mail:<br />
+        <input type="email" size="35" name="email">
+
+    </p>
+
+    <p>
+        Sua dúvida:<br />
+        <input type="text" size="150" name="texto">
+    </p>
+
+    <p> <input type="submit" name="Enviar dúvida" value="Enviar"></p>
+  
+    </form>
+</div>
+  
+</body>
+  <%include  ../../../public/templates/cabecalho_scripts.html%>
+</html>
