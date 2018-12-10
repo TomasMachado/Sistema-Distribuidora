@@ -25,7 +25,7 @@ module.exports = function (){
 
     this.buscarDevolucoesCompleta = function(retorno){
         var con = db();
-        return con.query('select d.estado, d.motivo, d.descricao, c.nome from devolucoes as d left join cliente as c on d.cliente_id = c.id',retorno);
+        return con.query('select d.id, d.estado, d.motivo, d.descricao, c.nome from devolucoes as d left join cliente as c on d.cliente_id = c.id',retorno);
     }
 
 

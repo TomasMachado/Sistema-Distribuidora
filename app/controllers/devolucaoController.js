@@ -23,7 +23,7 @@ module.exports.buscar_todas = function(req, res){
   }
   else if(req.session.id_nivel == 0){
     console.log('>:(');
-    devolucaoModel.buscarDevolucoes(function(erro, retorno){
+    devolucaoModel.buscarDevolucoesCompleta(function(erro, retorno){
       console.log(retorno);
       console.log('>:(');
       //Botar aqui a renderização dos dados na tabela da página
@@ -63,6 +63,7 @@ module.exports.devolucoesCliente = function(req, res){
     }
   });
 }
+
 module.exports.mostrar_devolucao = function(req, res){
   var format = req.params.id;
   if(!req.session.cpf){
