@@ -5,12 +5,17 @@ var session = require('express-session');
 
 module.exports = function(app) {
 
+    //TODO verificar se é funcionario
     app.get('/', function (req, res) {
       var sess = req.session;
       console.log(sess)
-      if(sess.cpf){
+      if(sess.cpf ){
+        if(sess.id_nivel == 0){
+          res.render('Tela_Principal/index_func',{ layout: false , nome: sess.nome})}
+        else {
+          res.render('Tela_Principal/index_cliente',{ layout: false , nome: sess.nome})
 
-        res.render('Tela_Principal/index_func',{ layout: false , nome: sess.nome})
+        }
       }else
         res.render('Tela_Principal/pagina_deslogada', {layout: false});
     });
@@ -18,6 +23,7 @@ module.exports = function(app) {
     app.get('/login', function (req, res) {
       var sess = req.session;
       console.log(sess)
+      //usuario logado
       if(sess.cpf){
         res.redirect('/');
       }else{

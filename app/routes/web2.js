@@ -31,6 +31,10 @@ module.exports = function(app) {
     devolucaoController.mostrar_devolucao(req, res);
   });
 
+  app.get('/fale-conosco', function (req, res) {
+    res.render('Tela_FaleConosco/fale_conosco', {layout:false});
+  });
+
 
   app.get('/nao-encontrado', function(req, res){
     res.render('Tela_Principal/inexistente', {layout:false});
