@@ -14,13 +14,13 @@ const transporter = nodemailer.createTransport({
 module.exports.emailAlteracao = function(dados){
 
 
-    var $destinatario = dados[0].email;
+    var $destinatario = dados.email;
 
     var mailOptions = {
         from: $usuario,
         to: $destinatario,
         subject: 'Atualização sobre seu atendimento',
-        text: 'Seu atendimento está em estado de: ' + dados[0].estado,
+        text: 'Seu atendimento está em estado de: ' + dados.estado,
     };
 
     transporter.sendMail(mailOptions, function(error, info){
@@ -35,13 +35,13 @@ module.exports.emailAlteracao = function(dados){
 
 module.exports.enviarEmailCliente = function (dados) {
 
-    var $destinatario = dados[0].email;
+    var $destinatario = dados.email;
 
     var mailOptions = {
         from: $usuario,
         to: $destinatario,
         subject: 'Mensagem sobre seu atendimento',
-        text: dados[0].message,
+        text: dados.message,
     };
 
     transporter.sendMail(mailOptions, function(error, info){
@@ -55,15 +55,15 @@ module.exports.enviarEmailCliente = function (dados) {
 }
 
 
-module.exports.enviarFaleConosco = function (dados) {
+module.exports.enviarFaleConosco = function (dados,res) {
 
     var $destinatario = $usuario;
 
     var mailOptions = {
         from: $usuario,
         to: $destinatario,
-        subject: 'Dúvida do cliente ' + dados[0].nome,
-        text: 'mensagem: ' + dados[0].message + 'dados do cliente: ' + dados[0].nome + 'email do cliente: ' + dados[0].email,
+        subject: 'Dúvida do cliente ' + dados.nome,
+        text: 'mensagem: ' + dados.message + 'dados do cliente: ' + dados.nome + 'email do cliente: ' + dados.email,
     };
 
     transporter.sendMail(mailOptions, function(error, info){
