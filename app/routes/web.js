@@ -1,6 +1,7 @@
 var loginController = require('../controllers/loginController');
 var devolucaoController = require('../controllers/devolucaoController');
 var emailController = require('../controllers/emailController');
+var usuarioController = require('../controllers/usuarioController');
 var session = require('express-session');
 
 

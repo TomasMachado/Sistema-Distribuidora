@@ -1,5 +1,6 @@
 var loginController = require('../controllers/loginController');
 var devolucaoController = require('../controllers/devolucaoController');
+var usuarioController = require('../controllers/usuarioController');
 var session = require('express-session');
 var express = require('express');
 var path = require('path');
@@ -11,19 +12,17 @@ module.exports = function(app) {
   app.use(session({secret: 'ssshhhhh'}));
 
 
-  app.get('/usuario/:cpf', function(req,res){
-    if(! req.session.cpf){
-      res.redirect('../acesso-negado',{ layout: false , nome: req.session.nome});
-    }else
-    sess = req.session;
-    if(sess.id_nivel == 0){
-      //TODO mostrar pagina
-    }else if(sess.cpf == req.params.cpf){
-      //TODO mostrar pagina
+  app.get('/usuario/:idUsuario', function(req,res){
+    if(!req.session.cpf){
+      res.render('Tela_Principal/acesso_negado',{layout : false});
     }else{
-      res.redirect('../acesso-negado');
+    sess = req.session;
+    if(sess.id_nivel == 0 || sess.cpf == req.params.cpf){
+      usuarioController.info_usuario(req,res);
+    }else{
+      res.redirect('Tela_Principal/acesso_negado');
     }
-
+}
   });
 
 
@@ -50,7 +49,6 @@ module.exports = function(app) {
 
 
   })
-
 
   app.use(express.static('devolucao/public'));
 
