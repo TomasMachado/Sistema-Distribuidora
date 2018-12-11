@@ -20,7 +20,7 @@ module.exports = function(app) {
     if(sess.id_nivel == 0 || sess.cpf == req.params.cpf){
       usuarioController.info_usuario(req,res);
     }else{
-      res.redirect('Tela_Principal/acesso_negado');
+      res.render('Tela_Principal/acesso_negado');
     }
 }
   });

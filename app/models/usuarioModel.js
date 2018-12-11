@@ -4,6 +4,8 @@ module.exports = function (){
 
   this.buscar_usuario_completo = function(dados, retorno){
       var con = db();
-      return con.query('select * from clientes where cpf = ?',dados, retorno);
+      return con.query('select * from clientes where id = ?',dados, retorno);
   }
+
+    return this;
 }

@@ -8,12 +8,12 @@ var sess;
 
 
 module.exports.info_usuario = function(req, res){
-  var dados = req.body;
+  var dados = req.params.idUsuario;
   console.log(dados);
-  usuarioModel.buscar_usuario_completo( dados,function(dados,retorno){
+  usuarioModel.buscar_usuario_completo( dados,function(erro,retorno){
     if(!erro){
-      console.console.log(retorno);
-      res.render('Tela_devolução/index_cliente',{usuario: retorno});
+      console.log(retorno);
+      res.render('Tela_cliente/info_cliente',{layout:false, usuario: retorno});
     }
     else{
       //TODO tratar esse erro
