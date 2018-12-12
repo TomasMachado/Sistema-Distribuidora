@@ -12,7 +12,7 @@ module.exports.info_usuario = function(req, res){
   console.log(dados);
   usuarioModel.buscar_usuario_completo( dados,function(erro,retorno){
     if(!erro){
-      console.log(retorno);
+      console.log(retorno[0]);
       res.render('Tela_cliente/info_cliente',{layout:false, usuario: retorno[0]});
     }
     else{
