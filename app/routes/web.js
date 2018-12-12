@@ -43,16 +43,18 @@ module.exports = function(app) {
     });
 
     app.post('/registrar_devolucao', function (req, res) {
+
         devolucaoController.inserir(req, res);
     });
 
     app.get('/devolucao',function(req,res){
+      if(!req.session.cpf){
+        res.redirect('/login');
+      }else{
           res.render('Tela_devolução/index_cliente', { layout: false, name : "name1" });
+          }
       });
 
-    app.get('/index_cliente',verifyJWT, function(req, res){
-        res.render('Tela_devolução/index_cliente',{ layout: false });
-    });
     function verifyJWT(req, res, next) {
         var token = req.body.token || req.query.token || req.headers['x-access-token'];
         if (!token) return res.status(401).send({auth: false, message: 'No token provided.'});

@@ -11,8 +11,19 @@ var sess;
 
 module.exports.inserir = function(req, res){
   var dados = req.body;
-  console.log(dados)
-  devolucaoModel.inserirDados(dados,function(erro, retorno){
+  console.log(dados);
+  var dadosInsersao = {
+    id : dados.pedido_id,
+    codigo_produto : dados.produto_id,
+    codigo_pedido : dados.pedido_id,
+    motivo : dados.motivo,
+    descricao : dados.descricao,
+    cliente_id : req.session.cpf,
+  }
+  devolucaoModel.inserirDados(dadosInsersao,function(erro, retorno){
+    if(erro){
+      console.log(erro);
+    }
     res.redirect('/devolucao');
   });
 }
@@ -72,7 +83,7 @@ module.exports.mostrar_devolucao = function(req, res){
     devolucaoModel.buscarDevolucao(format,function(format, retorno){
       console.log(retorno);
       if(retorno == null || retorno.length == 0){
-        res.render('Tela_Principal/inexistente');
+        res.render('Tela_Principal/inexistente', {layout : false});
       }else if(req.session.id_nivel == 0 || retorno[0].cliente_id == req.session.cpf){
         console.log(retorno[0]);
         res.render('Tela_devolução/devolucao', {layout : false, devolucao : retorno[0]})
