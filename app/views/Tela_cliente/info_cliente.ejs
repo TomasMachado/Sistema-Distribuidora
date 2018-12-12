@@ -5,17 +5,21 @@
 </head>
 
 <body>
+
+
+
   <%include  ../../../public/templates/cabecalho.html%>
   <div style=" width: 75%; margin: auto;">
     <div style=" width: 100%;">
 
-    <img src="images/perfis/kaos hummm.jpg" alt="Italian Trulli" style="width: 130px;/* height:60px; */float: right;">
-      <div style="/* border-bottom: 1px solid; */display: inline;width: 500px;padding-right: 100%;"> #NOME# </div>
+    <img src="<%= usuario[0].imagem %>" alt="<%= usuario[0].nome %>" style="width: 130px;/* height:60px; */float: right;">
+      <div style="font-weight: bold; font-size: 25px; color:#222; display: inline;width: 500px;padding-right: 100%;"> <%= usuario[0].nome %>
+      </div>
     </div>
     <div> CPF </div>
-    <div> #CPF# </div>
-    <div> Endereço </div>
-    <div> #ENDEREÇO# </div>
+      <div><%= usuario[0].id %></div>
+    <div> E-mail </div>
+    <div> <%=usuario[0].email %></div>
 
 </div>
 </body>
