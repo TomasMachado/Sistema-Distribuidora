@@ -44,7 +44,7 @@ module.exports = function(app) {
       devolucaoController.buscar_todas(req, res);
   });
 
-  app.get('/devolucoes/:id_cliente', function(){
+  app.get('/devolucoes/:id_cliente', function(req, res){
     devolucaoController.mostrar_devolucoes(req, res);
 
 

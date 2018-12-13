@@ -97,11 +97,13 @@ module.exports.mostrar_devolucao = function(req, res){
 
 
 module.exports.mostrar_devolucoes = function(req, res){
-  var format = req.params.id;
+  var format = req.params.id_cliente;
+  console.log(format);
   if(!req.session.cpf){
     res.render('Tela_Principal/acesso_negado', {layout : false});
   }else{
-    devolucaoModel.buscarDevolucao(format,function(format, retorno){
+    devolucaoModel.devolucoesCliente(format, function(format, retorno){
+      // console.log(format);
       console.log(retorno);
       if(retorno == null || retorno.length == 0){
         res.render('Tela_Principal/inexistente', {layout : false});
