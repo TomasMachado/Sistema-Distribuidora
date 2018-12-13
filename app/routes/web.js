@@ -7,6 +7,14 @@ var session = require('express-session');
 
 module.exports = function(app) {
 
+
+  app.get('/*', function (req, res,next) {
+    var sess = req.session;
+    req.nome = sess.nome;
+    next();
+
+  });
+
     //TODO verificar se é funcionario
     app.get('/', function (req, res) {
       var sess = req.session;
@@ -51,7 +59,7 @@ module.exports = function(app) {
       if(!req.session.cpf){
         res.redirect('/login');
       }else{
-          res.render('Tela_devolução/index_cliente', { layout: false, name : "name1" });
+          res.render('Tela_devolução/index_cliente', { layout: false ,nome: req.session.nome });
           }
       });
 

@@ -31,12 +31,12 @@ module.exports = function(app) {
   });
 
   app.get('/fale-conosco', function (req, res) {
-    res.render('Tela_FaleConosco/fale_conosco', {layout:false});
+    res.render('Tela_FaleConosco/fale_conosco', {layout:false,nome: req.session.nome });
   });
 
 
   app.get('/nao-encontrado', function(req, res){
-    res.render('Tela_Principal/inexistente', {layout:false});
+    res.render('Tela_Principal/inexistente', {layout:false,nome: req.session.nome });
 
   });
 

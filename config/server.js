@@ -40,7 +40,7 @@ module.exports = function(){
     var rotas_temp = require('../app/routes/web_temp');
     rotas_temp(app);
 
-    app.listen(8000,function(){
+    app.listen(8000,'0.0.0.0',function(){
       console.log("localhost:8000");
     });
 

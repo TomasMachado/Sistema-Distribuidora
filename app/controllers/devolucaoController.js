@@ -30,7 +30,7 @@ module.exports.inserir = function(req, res){
 
 module.exports.buscar_todas = function(req, res){
   if(!req.session.cpf){
-    res.render('Tela_Principal/acesso_negado', {layout : false});
+    res.render('Tela_Principal/acesso_negado', {layout : false,nome: req.session.nome });
   }
   else if(req.session.id_nivel == 0){
     console.log('>:(');
@@ -38,10 +38,10 @@ module.exports.buscar_todas = function(req, res){
       console.log(retorno);
       console.log('>:(');
       //Botar aqui a renderização dos dados na tabela da página
-      res.render('Tela_devolucoes/devolucoes', {devolucoes: retorno, layout:false});
+      res.render('Tela_devolucoes/devolucoes', {devolucoes: retorno, layout:false,nome: req.session.nome });
     });
   }else{
-    res.render('Tela_Principal/acesso_negado', {layout : false});
+    res.redirect('/devolucoes/' + req.session.cpf);
   }
 }
 
@@ -65,7 +65,7 @@ module.exports.devolucoesCliente = function(req, res){
   var dados = req.body;
   devolucaoModel.devolucoesCliente( dados,function(dados,erro, retorno){
     if(!erro){
-      res.render('Tela_devolução/index_cliente',{devolucoes: retorno});
+      res.render('Tela_devolução/index_cliente',{devolucoes: retorno,nome: req.session.nome });
     }
     else{
       //TODO tratar esse erro
@@ -83,13 +83,13 @@ module.exports.mostrar_devolucao = function(req, res){
     devolucaoModel.buscarDevolucao(format,function(format, retorno){
       console.log(retorno);
       if(retorno == null || retorno.length == 0){
-        res.render('Tela_Principal/inexistente', {layout : false});
+        res.render('Tela_Principal/inexistente', {layout : false,nome: req.session.nome });
       }else if(req.session.id_nivel == 0 || retorno[0].cliente_id == req.session.cpf){
         console.log(retorno[0]);
-        res.render('Tela_devolução/devolucao', {layout : false, devolucao : retorno[0]})
+        res.render('Tela_devolução/devolucao', {layout : false, devolucao : retorno[0],nome: req.session.nome })
       }
       else if(retorno[0].cliente_id != req.session.cpf){
-        res.render('Tela_Principal/acesso_negado', {layout : false});
+        res.render('Tela_Principal/acesso_negado', {layout : false,nome: req.session.nome });
       }
   });
 }
@@ -109,7 +109,8 @@ module.exports.mostrar_devolucoes = function(req, res){
         res.render('Tela_Principal/inexistente', {layout : false});
       }else if(req.session.id_nivel == 0 || retorno[0].cliente_id == req.session.cpf){
         console.log(retorno[0]);
-        res.render('Tela_devolução/devolucoes_cliente', {layout : false, devolucoes : retorno});
+        res.render('Tela_devolução/devolucoes_cliente', {layout : false, devolucoes : retorno,nome: req.session.nome, cliente :
+        req.session.cpf == format});
       }
       else if(retorno[0].cliente_id != req.session.cpf){
         res.render('Tela_Principal/acesso_negado', {layout : false});

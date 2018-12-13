@@ -16,7 +16,7 @@ module.exports.info_usuario = function(req, res){
     }else
     if(!erro){
       console.log(retorno[0]);
-      res.render('Tela_cliente/info_cliente',{layout:false, usuario: retorno[0]});
+      res.render('Tela_cliente/info_cliente',{layout:false, usuario: retorno[0],nome: req.session.nome });
     }
     else{
       //TODO tratar esse erro
