@@ -94,3 +94,24 @@ module.exports.mostrar_devolucao = function(req, res){
   });
 }
 }
+
+
+module.exports.mostrar_devolucoes = function(req, res){
+  var format = req.params.id;
+  if(!req.session.cpf){
+    res.render('Tela_Principal/acesso_negado', {layout : false});
+  }else{
+    devolucaoModel.buscarDevolucao(format,function(format, retorno){
+      console.log(retorno);
+      if(retorno == null || retorno.length == 0){
+        res.render('Tela_Principal/inexistente', {layout : false});
+      }else if(req.session.id_nivel == 0){
+        console.log(retorno[0]);
+        res.render('Tela_devolução/devolucoes_cliente', {layout : false, devolucao : retorno})
+      }
+      else if(retorno[0].cliente_id != req.session.cpf){
+        res.render('Tela_Principal/acesso_negado', {layout : false});
+      }
+  });
+}
+}

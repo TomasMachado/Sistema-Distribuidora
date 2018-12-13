@@ -45,7 +45,7 @@ module.exports = function(app) {
   });
 
   app.get('/devolucoes/:id_cliente', function(){
-    //TODO ver todas devolucoes do cliente
+    devolucaoController.mostrar_devolucoes(req, res);
 
 
   })
