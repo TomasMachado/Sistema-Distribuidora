@@ -107,9 +107,9 @@ module.exports.mostrar_devolucoes = function(req, res){
       console.log(retorno);
       if(retorno == null || retorno.length == 0){
         res.render('Tela_Principal/inexistente', {layout : false});
-      }else if(req.session.id_nivel == 0){
+      }else if(req.session.id_nivel == 0 || retorno[0].cliente_id == req.session.cpf){
         console.log(retorno[0]);
-        res.render('Tela_devolução/devolucoes_cliente', {layout : false, devolucao : retorno})
+        res.render('Tela_devolução/devolucoes_cliente', {layout : false, devolucoes : retorno});
       }
       else if(retorno[0].cliente_id != req.session.cpf){
         res.render('Tela_Principal/acesso_negado', {layout : false});
