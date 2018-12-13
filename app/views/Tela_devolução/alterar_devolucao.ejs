@@ -10,7 +10,7 @@
 
     <div class = "corpo" style="width: 75%; margin:auto; margin-top: 3%;">
     <h1>Devolução # <%= devolucao.id %></h1>
-    <form action="/testetela" method="post">
+    <form action="/testetela/<%= devolucao.id %>" method="post">
     <p>
         Estado atual: <%= devolucao.estado %><br/>
         <div class="form-check">
@@ -91,7 +91,9 @@
  
 
     <div>
-        <p><button type="submit" style="margin-top:10px;">Salvar alterações!</button></p> 
+        <p>
+        
+            <button type="submit" style="margin-top:10px;">Salvar alterações!</button></p> 
     </div>
     </form>
 

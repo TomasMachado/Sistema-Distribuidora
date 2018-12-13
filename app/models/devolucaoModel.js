@@ -15,7 +15,7 @@ module.exports = function (){
 
     this.alterarEstado = function(dados,retorno){
         var con = db();
-        return con.query('UPDATE devolucoes SET estado = ? WHERE devolucao_id = ? ',dados,retorno);
+        return con.query('UPDATE devolucoes SET estado = ? WHERE id = ? ',dados,retorno);
     }
 
     this.buscarEspecificaEmail = function(dados, retorno){
