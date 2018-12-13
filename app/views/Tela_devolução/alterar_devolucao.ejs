@@ -11,7 +11,7 @@
     <div class = "corpo" style="width: 75%; margin:auto; margin-top: 3%;">
     <h1>Devolução # <%= devolucao.id %></h1>
     <form action="/testetela/<%= devolucao.id %>" method="post">
-        <input type="text" name="id" value="<%= devolucao.id %>" checked="">
+        <input type="hidden" name="id" value="<%= devolucao.id %>" checked="">
     <p>
         Estado atual: <%= devolucao.estado %><br/>
         <div class="form-check">
@@ -76,17 +76,17 @@
 
     <p>
         Código produto:<br/>
-        <input type="text" name="produto_id" value="<%= devolucao.produto_id %>">
+        <input type="text" name="codigo_produto" value="<%= devolucao.codigo_produto %>">
     </p>
 
     <p>
         Código pedido:<br/>
-        <input type="text" name="produto_id" value="<%= devolucao.pedido_id %>">
+        <input type="text" name="codigo_pedido" value="<%= devolucao.codigo_pedido %>">
     </p>
 
     <p>
         Descrição: <br/>
-        <textarea style="font-size: 22px"> <%= devolucao.descricao %></textarea><br/>
+        <textarea name="descricao" style="font-size: 22px"> <%= devolucao.descricao %></textarea><br/>
     </p>
 
  
