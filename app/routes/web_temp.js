@@ -14,4 +14,9 @@ module.exports = function(app) {
         res.render('Tela_cliente/info_cliente', { layout: false, name : "name1" });
     });
 
+
+  app.get('/testetela', function(req,res){
+    res.render('Tela_devolução/devolucao_cliente',{ layout: false, devolucao: { id: 1, motivo:"teste", estado: "teste", descricao: "teste"}});
+  })
+
   }

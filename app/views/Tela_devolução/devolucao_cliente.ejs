@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <%include  ../../../public/templates/cabecalho_styles.html/%>
+  </head>
+
+  <body>
+      <%include  ../../../public/templates/cabecalho.html/%>
+
+      <div class = "conteudo" style="border:1px gray solid">
+          <p>Numero da devolução: <%= devolucao.id %></p>
+          <p>Motivo da devolução: <%= devolucao.motivo %></p>
+          <p>Estado da devolução: <%= devolucao.estado %></p>
+          <p>Descrição: <%= devolucao.descricao %></p>
+
+        
+
+      </div>
+
+  </body>
+
+<%include  ../../../public/templates/cabecalho_scripts.html/%>
+
+<html>
