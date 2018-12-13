@@ -86,7 +86,7 @@ module.exports.mostrar_devolucao = function(req, res){
         res.render('Tela_Principal/inexistente', {layout : false,nome: req.session.nome });
       }else if(req.session.id_nivel == 0 || retorno[0].cliente_id == req.session.cpf){
         console.log(retorno[0]);
-        res.render('Tela_devolução/devolucao', {layout : false, devolucao : retorno[0],nome: req.session.nome })
+        res.render('Tela_devolução/devolucao_cliente', {layout : false, devolucao : retorno[0],nome: req.session.nome })
       }
       else if(retorno[0].cliente_id != req.session.cpf){
         res.render('Tela_Principal/acesso_negado', {layout : false,nome: req.session.nome });

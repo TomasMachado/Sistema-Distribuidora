@@ -59,7 +59,7 @@ module.exports = function(app) {
       if(!req.session.cpf){
         res.redirect('/login');
       }else{
-          res.render('Tela_devolução/index_cliente', { layout: false ,nome: req.session.nome });
+          res.render('Tela_devolução/index_cliente', { layout: false ,nome: req.session.nome, cliente : req.session.id_nivel != 0 });
           }
       });
 

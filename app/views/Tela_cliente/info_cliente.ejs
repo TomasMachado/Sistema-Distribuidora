@@ -21,6 +21,10 @@
     <div> E-mail </div>
     <div> <%=usuario.email %></div>
 
+    <div>
+      <div><a href = '/devolucoes/<%= usuario.id %>' >Devoluções</a></div>
+      <div><a href = '/manutencoes/<%= usuario.id %>'>Manutenções</a></div>
+
 </div>
 </body>
   <%include  ../../../public/templates/cabecalho_scripts.html%>
