@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/nosso.css">
+      <%include  ../../../public/templates/cabecalho_styles.html%>
+  </head>
+
+  <body>
+    <%include  ../../../public/templates/cabecalho.html%>
+
+
+    <div class = "corpo" style="width: 75%; margin:auto; margin-top: 3%;">
+    <h1>Devolução # <%= devolucao.id %></h1>
+    <p>
+        Estado atual: <%= devolucao.estado %><br/>
+        <div class="form-check">
+                <input class="form-check-input" type="radio" name="estado" value="option1" checked="">
+                <label class="form-check-label">
+               Em análise.
+                </label>
+             </div>
+             <div class="form-check">
+                <input class="form-check-input" type="radio" name="estado" value="option2" checked="">
+                <label class="form-check-label">
+                Produto em transporte.
+                </label>
+             </div>
+             <div class="form-check">
+                <input class="form-check-input" type="radio" name="estado" value="option3" checked="">
+                <label class="form-check-label">
+                Produto recebido.
+                </label>
+             </div>
+             <div class="form-check">
+                    <input class="form-check-input" type="radio" name="estado" value="option4" checked="">
+                    <label class="form-check-label">
+                    Produto em análise.
+                    </label>
+                 </div>
+             <div class="form-check">
+                <input class="form-check-input" type="radio" name="estado" value="option4" checked="">
+                <label class="form-check-label">
+                Devolução concluída.
+                </label>
+             </div>
+    </p>
+
+    <p>
+        Motivo: <%= devolucao.estado %> <br/>
+       <div class="form-check">
+            <input class="form-check-input" type="radio" name="motivo" value="option1" checked="">
+            <label class="form-check-label">
+            A embalagem veio violada.
+            </label>
+         </div>
+         <div class="form-check">
+            <input class="form-check-input" type="radio" name="motivo" value="option2" checked="">
+            <label class="form-check-label">
+            O produto não atendeu o esperado.
+            </label>
+         </div>
+         <div class="form-check">
+            <input class="form-check-input" type="radio" name="motivo" value="option3" checked="">
+            <label class="form-check-label">
+            O produto não está funcionando.
+            </label>
+         </div>
+         <div class="form-check">
+            <input class="form-check-input" type="radio" name="motivo" value="option4" checked="">
+            <label class="form-check-label">
+            O produto está arranhado/danificado.
+            </label>
+         </div>
+    </p>
+
+    <p>
+        Código produto:<br/>
+        <input type="text" name="produto_id" value="<%= devolucao.produto_id %>">
+    </p>
+
+    <p>
+        Código pedido:<br/>
+        <input type="text" name="produto_id" value="<%= devolucao.pedido_id %>">
+    </p>
+
+    <p>
+        Descrição: <br/>
+        <textarea style="font-size: 22px"> <%= devolucao.descricao %></textarea><br/>
+    </p>
+
+ 
+
+    <div>
+        <p><button type="submit" style="margin-top:10px;">Salvar alterações!</button></p> 
+    </div>
+
+
+</div>
+  </body>
+    <%include  ../../../public/templates/cabecalho_scripts.html%>
+</html>
