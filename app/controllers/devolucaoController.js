@@ -13,7 +13,7 @@ module.exports.inserir = function(req, res){
   var dados = req.body;
   console.log(dados);
   var dadosInsersao = {
-    id : dados.pedido_id,
+    id : 1,  
     codigo_produto : dados.produto_id,
     codigo_pedido : dados.pedido_id,
     motivo : dados.motivo,
@@ -86,7 +86,8 @@ module.exports.mostrar_devolucao = function(req, res){
         res.render('Tela_Principal/inexistente', {layout : false,nome: req.session.nome });
       }else if(req.session.id_nivel == 0 || retorno[0].cliente_id == req.session.cpf){
         console.log(retorno[0]);
-        res.render('Tela_devolução/devolucao_cliente', {layout : false, devolucao : retorno[0],nome: req.session.nome })
+        res.render('Tela_devolução/devolucao_cliente', {layout : false,
+          devolucao : retorno[0],nome: req.session.nome })
       }
       else if(retorno[0].cliente_id != req.session.cpf){
         res.render('Tela_Principal/acesso_negado', {layout : false,nome: req.session.nome });
@@ -98,6 +99,7 @@ module.exports.mostrar_devolucao = function(req, res){
 
 module.exports.mostrar_devolucoes = function(req, res){
   var format = req.params.id_cliente;
+  var id = format;
   console.log(format);
   if(!req.session.cpf){
     res.render('Tela_Principal/acesso_negado', {layout : false});
@@ -109,8 +111,9 @@ module.exports.mostrar_devolucoes = function(req, res){
         res.render('Tela_Principal/inexistente', {layout : false});
       }else if(req.session.id_nivel == 0 || retorno[0].cliente_id == req.session.cpf){
         console.log(retorno[0]);
-        res.render('Tela_devolução/devolucoes_cliente', {layout : false, devolucoes : retorno,nome: req.session.nome, cliente :
-        req.session.cpf == format});
+        res.render('Tela_devolução/devolucoes_cliente', {layout : false,
+          devolucoes : retorno,nome: req.session.nome, cliente :
+        req.session.cpf == id});
       }
       else if(retorno[0].cliente_id != req.session.cpf){
         res.render('Tela_Principal/acesso_negado', {layout : false});

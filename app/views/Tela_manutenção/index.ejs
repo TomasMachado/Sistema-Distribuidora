@@ -6,13 +6,11 @@
 <!DOCTYPE HTML>
 <html lang="zxx">
    <head>
-      <title>Devolução de produto</title>
+      <title>Manutenção de produto</title>
         <%include  ../../../public/templates/cabecalho_styles.html%>
       <!-- Meta tag Keywords -->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta charset="UTF-8" />
-      <meta name="keywords" content="Rating Website Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements"
-         />
       <script>
          addEventListener("load", function () {
          	setTimeout(hideURLbar, 0);
@@ -42,43 +40,43 @@
       <!-- content -->
 
 	  <div style = "margin:45px; padding-top: 120px; font-size:">
-		 <h1 >Devolução de produto
+		 <h1 >Manutenção de produto
  </h1>
       <div style="background:#eee; padding:30px;" >
-         <form action="/registrar_devolucao" method="post">
+         <form action="/registrar_manutencao" method="post">
             <div class="main">
                <div class="form-group-w3l">
-                  <p>Numero do pedido</p>
-                  <input type="text" name="pedido_id" placeholder="" required="">
-               </div>
-               <div class="form-group-w3l">
-                  <p>Código produto</p>
+                  <p>Modelo do produto</p>
                   <input type="text" name="produto_id" placeholder="" required="">
                </div>
             </div>
 
             <div class="sub-hedder">
-               <h2>Indique o motivo da devolução:</h2>
+               <h2>Indique o motivo da manutenção:</h2>
                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="motivo" value="Embalagem violada" checked="">
+                  <input class="form-check-input" type="radio" name="motivo"
+                  value="Embalagem violada" checked="">
                   <label class="form-check-label">
                   A embalagem veio violada.
                   </label>
                </div>
                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="motivo" value="Produto insatisfatório" checked="">
+                  <input class="form-check-input" type="radio" name="motivo"
+                  value="Produto insatisfatório" checked="">
                   <label class="form-check-label">
                   O produto não atendeu o esperado.
                   </label>
                </div>
                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="motivo" value="Produto não funcional" checked="">
+                  <input class="form-check-input" type="radio" name="motivo"
+                  value="Produto não funcional" checked="">
                   <label class="form-check-label">
                   O produto não está funcionando.
                   </label>
                </div>
                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="motivo" value="Produto danificado" checked="">
+                  <input class="form-check-input" type="radio" name="motivo"
+                   value="Produto danificado" checked="">
                   <label class="form-check-label">
                   O produto está arranhado/danificado.
                   </label>
