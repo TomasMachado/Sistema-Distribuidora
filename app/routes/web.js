@@ -63,6 +63,15 @@ module.exports = function(app) {
           }
       });
 
+      app.get('/meu-perfil',function(req,res){
+        if(!req.session.cpf){
+          res.redirect('/login');
+        }else{
+           req.params.idUsuario = req.session.cpf;
+              usuarioController.info_usuario(req,res);
+            }
+        });
+
     function verifyJWT(req, res, next) {
         var token = req.body.token || req.query.token || req.headers['x-access-token'];
         if (!token) return res.status(401).send({auth: false, message: 'No token provided.'});

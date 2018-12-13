@@ -11,7 +11,7 @@ module.exports.info_usuario = function(req, res){
   var dados = req.params.idUsuario;
   console.log(dados);
   usuarioModel.buscar_usuario_completo( dados,function(erro,retorno){
-    if(retorno == undefined){
+    if(retorno[0] == null){
       res.render('Tela_Principal/inexistente', {layout : false});
     }else
     if(!erro){

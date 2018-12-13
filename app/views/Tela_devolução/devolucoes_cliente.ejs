@@ -1,47 +1,59 @@
 <html>
-  <head>
-    <%include  ../../../public/templates/cabecalho_styles.html/%>
-  </head>
+<head>
+  <%include  ../../../public/templates/cabecalho_styles.html/%>
 
-  <body>
-      <%include  ../../../public/templates/cabecalho.html/%>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
-      <div class = "conteudo" style=" margin:auto; width:80%; margin-top:3%">
-        <% if (typeof cliente == 'boolean' && cliente)  { %>
-            <h1>Minhas devoluções</h1>
-          <% } else { %>
-              <h1>Devoluções de <%= nome%></h1>
-            <%  }%>
+<body>
+  <%include  ../../../public/templates/cabecalho.html/%>
+
+  <div class = "conteudo" style=" margin:auto; width:80%; margin-top:3%">
+    <% if (typeof cliente == 'boolean' && cliente)  { %>
+      <h1>Minhas devoluções</h1>
+      <% } else { %>
+        <h1>Devoluções de <%= nome%></h1>
+        <%  }%>
         <div style = "border:1px gray solid;">
-        <table class="table table-striped table table-hover">
-          <thead>
-           <tr>
-            <th>Numero</th>
-            <th>Motivo</th>
-              <th>Estado</th>
-              <th>Descrições</th>
-            </tr>
-          </thead>
-          <tbody>
-             <% for(var chave in devolucoes){ %>
-     <tr class='clickable-row' data-href='/devolucao/<%=devolucoes[chave].id %>' style = " cursor: pointer;">
+          <table class="table table-striped table table-hover">
+            <thead>
+              <tr>
+                <th>Numero</th>
+                <th>Motivo</th>
+                <th>Estado</th>
+                <th>Descrições</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var chave in devolucoes){ %>
+                <tr class='clickable-row' data-href='/devolucao/<%=devolucoes[chave].id %>' style = " cursor: pointer;">
 
-            <td><%= devolucoes[chave].id %></td>
-            <td><%= devolucoes[chave].motivo %> </td>
-            <td><%= devolucoes[chave].estado %>  </td>
-            <td> <%= devolucoes[chave].descricao %> </td>
+                  <td><%= devolucoes[chave].id %></td>
+                  <td><%= devolucoes[chave].motivo %> </td>
+                  <td><%= devolucoes[chave].estado %>  </td>
+                  <td> <%= devolucoes[chave].descricao %> </td>
 
-        <% } %>
-          </tr>
-          </tbody>
-        </table>
+                  <% } %>
+                </tr>
+              </tbody>
+            </table>
 
-      </div>
+          </div>
 
-      </div>
+        </div>
+        <script>
+        jQuery(document).ready(function($) {
+          $('*[data-href]').on('click', function() {
+            window.location = $(this).data("href");
+          });
+        });
+        </script>
+      </body>
 
-  </body>
+      <%include  ../../../public/templates/cabecalho_scripts.html/%>
 
-<%include  ../../../public/templates/cabecalho_scripts.html/%>
-
-<html>
+      <html>

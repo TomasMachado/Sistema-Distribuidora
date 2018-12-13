@@ -16,7 +16,7 @@
                 <li><a href="../fale-conosco">Fale conosco</a></li>
 
                 <% if (typeof nome == 'string' && nome)  { %>
-                  <li><a href = ""><nobr> <i class="fa fa-user"></i> <%=nome%></nobr> </a></li>
+                  <li><a href = "/meu-perfil"<nobr> <i class="fa fa-user"></i> <%=nome%></nobr> </a></li>
                   <li  id = "ook"><a href = "/logout" >Logout</a></li>
                   <% } else { %>
                       <li ><a href = "/login" >Login</a></li>
@@ -32,7 +32,7 @@
                     <li><a href="services.html">Manutenções</a></li>
                     <li><a href="blog.html">Fale conosco</a></li>
                     <% if (typeof nome == 'string' && nome)  { %>
-                      <li><a href = ""><nobr> <i class="fa fa-user"></i> <%=nome%></nobr> </a></li>
+                      <li><a href = "/meu-perfil"><nobr> <i class="fa fa-user"></i> <%=nome%></nobr> </a></li>
                       <li  id = "ook"><a href = "/logout" >Logout</a></li>
                       <% } else { %>
                           <li ><a href = "/login" >Login</a></li>
