@@ -47,10 +47,11 @@ module.exports.buscar_todas = function(req, res){
 
 module.exports.alterarEstado = function(req, res){
   var dados = req.body;
+  console.log(dados);
   devolucaoModel.alterarEstado(dados,function(erro, retorno){
     if(!erro){
       devolucaoModel.buscarEspecificaEmail(dados,function(erro, retorno){
-        emailController.emailAlteracao(retorno);
+        //emailController.emailAlteracao(retorno);
       });
     }
     else{
@@ -94,6 +95,14 @@ module.exports.mostrar_devolucao = function(req, res){
       }
   });
 }
+}
+
+module.exports.buscarUma = function(req,res){
+  var format = req.params.id;
+  console.log(format);
+  devolucaoModel.buscarDevolucao(format, function(format, retorno){
+    res.render('Tela_devolução/alterar_devolucao',{ layout: false, devolucao: retorno[0]})
+  });
 }
 
 
