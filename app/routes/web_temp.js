@@ -16,16 +16,17 @@ module.exports = function(app) {
 
 
   app.get('/testetela', function(req,res){
-    res.render('Tela_devolução/alterar_devolucao',{ layout: false, devolucao: { id: 1, motivo:"teste", estado: "teste", descricao: "teste"}});
+    res.render('Tela_devolução/alterar_devolucao',{ layout: false,
+       devolucao: { id: 1, motivo:"teste", estado: "teste", descricao: "teste"}});
   })
 
   app.get('/testetela/:id', function(req,res){
       devolucaoController.buscarUma(req,res);
-      console.log("foi");
   })
 
   app.post('/testetela/:id', function(req,res){
     devolucaoController.alterarEstado(req,res);
+
     console.log("foi");
   } )
 

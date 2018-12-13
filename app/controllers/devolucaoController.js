@@ -49,15 +49,16 @@ module.exports.alterarEstado = function(req, res){
   var dados = req.body;
   console.log(dados);
   devolucaoModel.alterarEstado(dados,function(erro, retorno){
-    if(!erro){
-      devolucaoModel.buscarEspecificaEmail(dados,function(erro, retorno){
-        //emailController.emailAlteracao(retorno);
-      });
-    }
-    else{
-      // TODO melhorar a verificação do erro
-      console.log(erro);
-    }
+      res.redirect('/devolucao/' + req.params.id);
+    // if(!erro){
+    //   devolucaoModel.buscarEspecificaEmail(dados,function(erro, retorno){
+    //     //emailController.emailAlteracao(retorno);
+    //   });
+    // }
+    // else{
+    //   // TODO melhorar a verificação do erro
+    //   console.log(erro);
+    // }
   });
 }
 
@@ -100,7 +101,7 @@ module.exports.buscarUma = function(req,res){
   var format = req.params.id;
   console.log(format);
   devolucaoModel.buscarDevolucao(format, function(format, retorno){
-    res.render('Tela_devolução/alterar_devolucao',{ layout: false, devolucao: retorno[0]})
+    res.render('Tela_devolução/alterar_devolucao',{ layout: false, devolucao: retorno[0]});
   });
 }
 
