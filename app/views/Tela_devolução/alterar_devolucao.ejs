@@ -11,6 +11,7 @@
     <div class = "corpo" style="width: 75%; margin:auto; margin-top: 3%;">
     <h1>Devolução # <%= devolucao.id %></h1>
     <form action="/testetela/<%= devolucao.id %>" method="post">
+        <input type="text" name="id" value="<%= devolucao.id %>" checked="">
     <p>
         Estado atual: <%= devolucao.estado %><br/>
         <div class="form-check">
