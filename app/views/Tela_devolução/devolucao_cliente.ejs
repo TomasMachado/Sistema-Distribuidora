@@ -6,11 +6,18 @@
   <body>
       <%include  ../../../public/templates/cabecalho.html/%>
 
-      <div class = "conteudo" style="border:1px gray solid">
-          <p>Numero da devolução: <%= devolucao.id %></p>
-          <p>Motivo da devolução: <%= devolucao.motivo %></p>
-          <p>Estado da devolução: <%= devolucao.estado %></p>
-          <p>Descrição: <%= devolucao.descricao %></p>
+      <div class = "conteudo" style="width: 75%; margin:auto; margin-top: 3%;">
+          <p><h1>Devolução # <%= devolucao.id %></h1></p>
+          <p style="font-size: 25px">Motivo da devolução: <%= devolucao.motivo %></p>
+          <p style="font-size: 25px">Estado da devolução: <%= devolucao.estado %></p>
+          <p style="font-size: 25px">Descrição:<br/></p>
+          <textarea style="font-size: 22px" readonly="readonly"> <%= devolucao.descricao %></textarea><br/>
+          
+          <p><button type="submit" style="margin-top: 20; width: 100px;
+            height: 30px;">Alterar</button></p>  
+         
+
+         </div>
 
         
 
